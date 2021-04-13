@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Crypto.org Reward Tracker
+        </title>
+
+        <meta charset="utf-8" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="A tool to view your CRO rewards." />
+        <meta property="og:description" content="A tool to view your CRO rewards." />
+
+        <meta name="author" content="Julien Dambron" />
+
+
+        <meta property="og:title" content="Crypto.org Reward Tracker" />
+        <meta property="twitter:title" content="Crypto.org Reward Tracker" />
+
+        <style>
+@font-face{font-family:"Fira Code VF";src:url("/assets/fonts/FiraCode-VF.woff2") format("woff2-variations");font-weight:300 700;font-style:normal}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}:root{--bottom: 150px;--stars: url("");--hl-colr: 205;--hl-colg: 85;--hl-colb: 222}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;line-height:10px;color:#444d56;vertical-align:middle;background-color:#fafbfc;border:solid 1px #d1d5da;border-bottom-color:#d1d5da;border-radius:6px;box-shadow:inset 0 -1px 0 #d1d5da}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>*:first-child{margin-top:0 !important}.markdown-body>*:last-child{margin-bottom:0 !important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#cb2431}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre,.markdown-body details{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e1e4e8;border:0}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:0.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size:inherit}.markdown-body h1{padding-bottom:0.3em;font-size:2em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:0.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:0.875em}.markdown-body h6{font-size:0.85em;color:#6a737d}.markdown-body ul,.markdown-body ol{padding-left:2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding:0;list-style-type:none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top:0;margin-bottom:0}.markdown-body li{word-wrap:break-all}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;width:max-content;max-width:100%;overflow:auto}.markdown-body table th{font-weight:600}.markdown-body table th,.markdown-body table td{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:tansparent}.markdown-body table img{background-color:transparent}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #dfe2e5}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#24292e}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0.2em 0.4em;margin:0;font-size:85%;background-color:rgba(0,0,0,0.05);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:tansparent;border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:600;background:tansparent;border-top:0}html{font-size:100%}body{--bottom: 150px;background:linear-gradient(180deg, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) calc(var(--bottom) - 1px), rgba(255,255,255,0.5) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 100vh),linear-gradient(180deg, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) calc(var(--bottom) - 30px), rgba(255,255,255,0.2) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) calc(var(--bottom) + 10px), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 100vh),linear-gradient(180deg, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) calc(var(--bottom) - 50px), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0.2) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 100vh),linear-gradient(180deg, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) calc(var(--bottom) - 50px), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0.2) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 100vh),linear-gradient(180deg, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) calc(var(--bottom) - 50px), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0.2) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 100vh),linear-gradient(180deg, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) calc(var(--bottom) - 70px), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0.3) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 100vh),linear-gradient(180deg, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 120px, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0.4) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 100vh),linear-gradient(180deg, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 0px, rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0.3) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) var(--bottom), rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0) 100vh),linear-gradient(180deg, rgba(6,5,37,0.5) 0px, rgba(6,5,37,0.7) var(--bottom), rgba(6,5,37,0) var(--bottom), rgba(6,5,37,0) 100vh),var(--stars),#060525;background-repeat:no-repeat;font:18px/1.4 Helvetica,Arial,sans-serif;color:#e3e3e3}@media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){body{background:#060525}}table,th,td,tr{background-color:transparent !important}input[type="text"]{width:100%;padding:12px 20px;margin:8px 0;box-sizing:border-box;font-size:1.2rem}select{font-size:1.2rem}button{padding-top:5px;padding-bottom:5px;margin-top:5px;margin-bottom:10px}.container{margin:0 auto;max-width:900px;padding:0 10px;width:100%}a{color:#fff;text-decoration:none;cursor:pointer}a:hover,a:active{color:#fff}h2>a{color:#e3e3e3}ul,ol{margin:15px 0;padding-left:30px}ul{list-style-type:disc}ol{list-style-type:decimal}ol ul,ul ol,ul ul,ol ol{margin:0}ul ul,ol ul{list-style-type:circle}em,i{font-style:italic}strong,b{font-weight:bold}img{max-width:100%}.gmnoprint img{max-width:none}.date{font-style:italic;color:#666}::-moz-selection{color:#000;background:#eee}::selection{color:#000;background:#eee}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.wrapper-masthead{margin-bottom:50px}.masthead{padding:25px 0}@media screen and (max-width: 640px){.masthead{text-align:center}}.site-avatar svg{float:left;width:290px;height:auto}@media screen and (max-width: 640px){.site-avatar svg{float:none;display:block}}.posts>.post{padding-bottom:2em}.posts>.post:last-child{padding-bottom:1em;border-bottom:none}.post blockquote{margin:1.8em 0.8em;border-left:2px solid #666;padding:0.1em 1em;color:#666;font-size:22px;font-style:italic}.post .comments{margin-top:10px}.post .read-more{text-transform:uppercase;font-size:15px}.read-more{text-shadow:2px 2px rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 1)}h1,h2{border-bottom:1px solid rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 1) !important}footer{padding:20px 0;text-align:center}article{padding-bottom:30px}.disqus_thread{padding-top:20px}.commentsbtn-container{text-align:center !important;width:100%}.comments-btn{display:inline-block;padding:0.35em 1.2em;border:0.1em solid rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 1);border-radius:0.12em;box-sizing:border-box;text-decoration:none;font-weight:300;width:100%;color:rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 1);transition:all 0.2s;text-align:center}.comments-btn:hover{color:#000000;background-color:rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 1)}.github{width:60px;height:auto;margin-left:auto;margin-top:25px;margin-right:25px;display:block;color:rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 1);color:transparent;stroke:#70cdd3;stroke-width:0.5;cursor:pointer;filter:drop-shadow(0px 0px 3px #70cdd3);transition:500ms}.post-title a{color:white}.github:hover{stroke-width:0.8;stroke:#ccc;transition:500ms}@media screen and (max-width: 640px){.github-link{display:none}}.post-content p code,.post-content ul code{background-color:rgba(255,255,255,0.1) !important;border-radius:3px !important}.post-content a{color:rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 1);text-decoration:underline;transition:1000ms;padding:5px}.post-content a:hover{transition:1000ms;background-color:rgba(var(--hl-colr), var(--hl-colg), var(--hl-colb), 0.3) !important;color:white;border-radius:3px !important;text-decoration:none}.post-content li{margin:5px 0px}code{font-family:"Fira Code VF", "Consolas", "Courier", monospace}.highlight{background:#101324}.highlight .c{color:#008800;font-style:italic}.highlight .err{color:#ffffff}.highlight .g{color:#ffffff}.highlight .k{color:#fb660a;font-weight:bold}.highlight .l{color:#ffffff}.highlight .n{color:#ffffff}.highlight .o{color:#ffffff}.highlight .x{color:#ffffff}.highlight .p{color:#ffffff}.highlight .cm{color:#008800;font-style:italic}.highlight .cp{color:#ff0007;font-weight:bold;font-style:italic}.highlight .c1{color:#008800;font-style:italic}.highlight .cs{color:#008800;font-style:italic}.highlight .gd{color:#ffffff}.highlight .ge{color:#ffffff}.highlight .gr{color:#ffffff}.highlight .gh{color:#ffffff;font-weight:bold}.highlight .gi{color:#ffffff}.highlight .go{color:#444444}.highlight .gp{color:#ffffff}.highlight .gs{color:#ffffff}.highlight .gu{color:#ffffff;font-weight:bold}.highlight .gt{color:#ffffff}.highlight .kc{color:#fb660a;font-weight:bold}.highlight .kd{color:#fb660a;font-weight:bold}.highlight .kn{color:#fb660a;font-weight:bold}.highlight .kp{color:#fb660a}.highlight .kr{color:#fb660a;font-weight:bold}.highlight .kt{color:#cdcaa9;font-weight:bold}.highlight .ld{color:#ffffff}.highlight .m{color:#0086f7;font-weight:bold}.highlight .s{color:#0086d2}.highlight .na{color:#ff0086;font-weight:bold}.highlight .nb{color:#ffffff}.highlight .nc{color:#ffffff}.highlight .no{color:#0086d2}.highlight .nd{color:#ffffff}.highlight .ni{color:#ffffff}.highlight .ne{color:#ffffff}.highlight .nf{color:#ff0086;font-weight:bold}.highlight .nl{color:#ffffff}.highlight .nn{color:#ffffff}.highlight .nx{color:#ffffff}.highlight .py{color:#ffffff}.highlight .nt{color:#fb660a;font-weight:bold}.highlight .nv{color:#fb660a}.highlight .ow{color:#ffffff}.highlight .w{color:#888888}.highlight .mf{color:#0086f7;font-weight:bold}.highlight .mh{color:#0086f7;font-weight:bold}.highlight .mi{color:#0086f7;font-weight:bold}.highlight .mo{color:#0086f7;font-weight:bold}.highlight .sb{color:#0086d2}.highlight .sc{color:#0086d2}.highlight .sd{color:#0086d2}.highlight .s2{color:#0086d2}.highlight .se{color:#0086d2}.highlight .sh{color:#0086d2}.highlight .si{color:#0086d2}.highlight .sx{color:#0086d2}.highlight .sr{color:#0086d2}.highlight .s1{color:#0086d2}.highlight .ss{color:#0086d2}.highlight .bp{color:#ffffff}.highlight .vc{color:#fb660a}.highlight .vg{color:#fb660a}.highlight .vi{color:#fb660a}.highlight .il{color:#0086f7;font-weight:bold}
+
+        </style>
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+    </head>
+
+    <body>
+        <div class="wrapper-masthead">
+            <div class="container">
+                <header class="masthead clearfix">
+                    <h1>CRO Explorer</h1>
+                    <a
+                            class="github-link"
+                            href="https://github.com/jdambron/croexplorer"
+                            target="_blank"
+                            >
+                            <svg
+                                    class="github"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="-1 -1 27 27"
+                                    >
+                                    <path
+                                            fill="currentColor"
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                                            />
+                            </svg>
+                    </a>
+                </header>
+            </div>
+        </div>
+
+        <div id="main" role="main" class="container"><div id="main" role="main" class="markdown-body">
+                <h1 class="post-title">Crypto.org Reward Tracker</h1>
+                <p>
+                Enter your address below to check how much reward your Crypto.org Defi
+                address has been issued. The address and currency option is added to the
+                address bar parameters so you can bookmark this page for future reference.
+                Data is updated on this page very 5 seconds.
+                </p>
+                <form>
+                    <h2>CRO Address</h2>
+                    <input type="text" id="address" value="" />
+                    <div style="display: flex">
+                        <div>
+                            <label>Fiat Currency:</label>
+                            <select id="fiatOptions"></select>
+                        </div>
+                    </div>
+                    <a class="add-button read-more">Add to home screen</a>
+                </form>
+                <p id="error" style="color: red"></p>
+
+                <h2>Account Details</h2>
+                <p><b>Refresh in:</b> <span id="nextRefresh"></span></p>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>CRO Price</th>
+                        <th>Fiat Price</th>
+                    </tr>
+                    <tr>
+                        <th>Total Balance</th>
+                        <td id="totalBalanceCRO"></td>
+                        <td id="totalBalanceFiat"></td>
+                    </tr>
+                    <tr>
+                        <th>Balance</th>
+                        <td id="balanceCRO"></td>
+                        <td id="balanceFiat"></td>
+                    </tr>
+                    <tr>
+                        <th>Bonded Balance</th>
+                        <td id="bondedBalanceCRO"></td>
+                        <td id="bondedBalanceFiat"></td>
+                    </tr>
+                    <tr>
+                        <th>Claimed Reward</th>
+                        <td id="claimedCRO"></td>
+                        <td id="claimedFiat"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Unclaimed Reward</th>
+                        <td id="unclaimedCRO"></td>
+                        <td id="unclaimedFiat"></td>
+                    </tr>
+                    <tr>
+                        <th>Total Reward</th>
+                        <td id="totalRewardCRO"></td>
+                        <td id="totalRewardFiat"></td>
+                    </tr>
+                </table>
+
+                <p><b>Exchange Rate:</b> <span id="exchangeRate"></span></p>
+
+                <h2>Transaction History</h2>
+                <button id="downloadCSVBtn">Download CSV</button>
+                <div id="transactions"></div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script
+                    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"
+                    integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ=="
+                    crossorigin="anonymous"
+                    ></script>
+
+            <script>
+                const transactionsTable = document.getElementById("transactions");
+                                const errorOutput = document.getElementById("error");
+                                const addressField = document.getElementById("address");
+                                const fiatOptions = document.getElementById("fiatOptions");
+                                const exRate = document.getElementById("exchangeRate");
+                                const nextRefresh = document.getElementById("nextRefresh");
+                                const downloadCSVBtn = document.getElementById("downloadCSVBtn");
+
+                                const baseCro = 0.00000001;
+                                const croRx = /^cro1[a-z0-9]{38}$/;
+
+                                let price = null;
+                                let transactions = null;
+                                let withdrawals = null;
+                                let claimed = null;
+                                let account = {};
+                                let parsedTransactions = null;
+                                let address = null;
+                                let currency = "GBP";
+                                let fiatRates = {};
+                                let sendIn = 0;
+                                let sendOut = 0;
+
+                                function updateTable(field, cro) {
+                                                    const croCell = document.getElementById(field + "CRO");
+                                                    const fiatCell = document.getElementById(field + "Fiat");
+
+                                                    // Create our number formatter.
+                                                    let formatter = new Intl.NumberFormat("en-US", {
+                                                                        style: "currency",
+                                                                        currency: currency,
+                                                                    });
+
+                                                    croCell.innerText = (cro * baseCro).toFixed(8);
+                                                    fiatCell.innerText = formatter.format(cro * baseCro * price);
+
+                                                    exRate.innerText = "1 CRO = " + formatter.format(price);
+                                                }
+
+                                async function getAccount(address) {
+                                                    const url = `https://crypto.org/explorer/api/v1/accounts/${address}`;
+
+                                                    const res = await axios.get(url);
+
+                                                    const result = res.data.result;
+
+                                                    return {
+                                                                        totalBalance: parseInt((result.totalBalance[0] || {}).amount ?? 0),
+                                                                        balance: parseInt((result.balance[0] || {}).amount ?? 0),
+                                                                        bondedBalance: parseInt((result.bondedBalance[0] || {}).amount ?? 0),
+                                                                        unclaimedReward: parseInt((result.totalRewards[0] || {}).amount ?? 0),
+                                                                    };
+                                                }
+
+                                async function updateFiat() {
+                                                    const fiaturl = `https://crypto.com/price/coin-data/fiat_rates.json`;
+
+                                                    const fiatRes = await axios.get(fiaturl);
+
+                                                    fiatRates = fiatRes.data.data;
+
+                                                    if (fiatOptions.options.length === 0) {
+                                                                        var option = document.createElement("option");
+                                                                        option.text = "USD";
+                                                                        fiatOptions.add(option);
+
+                                                                        fiatRates.forEach((f) => {
+                                                                                            var option = document.createElement("option");
+                                                                                            option.text = f.target;
+                                                                                            fiatOptions.add(option);
+                                                                                        });
+
+                                                                        fiatOptions.value = currency;
+                                                                    }
+
+                                                    // Refresh fiat rates every 60 seconds
+                                                    setTimeout(updateFiat, 60000);
+                                                }
+
+                                async function getPrice(currency) {
+                                                    const priceurl = `https://crypto.com/price/coin-data/crypto-com-coin/basic_info.json`;
+
+                                                    const res = await axios.get(priceurl);
+
+                                                    const result = res.data;
+
+                                                    const priceUSD = parseFloat(result.usd_price_current);
+
+                                                    if (currency === "USD") return priceUSD;
+
+                                                    const exchangeRate = parseFloat(
+                                                                        fiatRates.filter((e) => e.target === currency)[0].exchange_rate
+                                                                    );
+
+                                                    return priceUSD * exchangeRate;
+                                                }
+
+                                async function getTransactions(address, page = 1) {
+                                                    const url = `https://crypto.org/explorer/api/v1/accounts/${address}/transactions?page=${page}`;
+
+                                                    const res = await axios.get(url);
+
+                                                    const result = res.data.result;
+
+                                                    if (page < res.data.pagination.total_page) {
+                                                                        return [...result, ...(await getTransactions(address, page + 1))];
+                                                                    }
+
+                                                    return result.filter((t) => t.success);
+                                                }
+
+                                function parseTransactions(transactions) {
+                                                    let result = [];
+
+                                                    transactions
+                                                        .filter((t) => t.success)
+                                                        .forEach((t) => {
+                                                                            result = result.concat({
+                                                                                                time: t.blockTime,
+                                                                                                type: t.messages[0].content.msgName,
+                                                                                                fee: parseInt(t.fee[0].amount),
+                                                                                                direction:
+                                                                                                t.messages[0].content.msgName === "MsgSend"
+                                                                                                ? t.messages[0].content.toAddress === address
+                                                                                                ? "In"
+                                                                                                : "Out"
+                                                                                                : "",
+                                                                                                amount: parseInt(
+                                                                                                                    (t.messages[0].content.amount || {}).amount ||
+                                                                                                                    (t.messages[0].content.amount || [{}])[0].amount ||
+                                                                                                                    0
+                                                                                                                ),
+                                                                                                memo: t.memo || "",
+                                                                                            });
+                                                                        });
+
+                                                    return result;
+                                                }
+
+                                async function updateAddress() {
+                                                    // Do nothing if address is already upto date
+                                                    if (addressField.value === address) return 0;
+
+                                                    if (!croRx.test(addressField.value)) {
+                                                                        errorOutput.innerText = "Invalid address";
+                                                                        return 1;
+                                                                    }
+
+                                                    address = addressField.value;
+
+                                                    transactions = await getTransactions(address);
+                                                    parsedTransactions = parseTransactions(transactions);
+
+                                                    sendIn = parsedTransactions
+                                                        .filter((m) => m.type === "MsgSend" && m.direction === "In")
+                                                        .reduce((a, c) => a + c.amount, 0);
+
+                                                    sendOut = parsedTransactions
+                                                        .filter((m) => m.type === "MsgSend" && m.direction === "Out")
+                                                        .reduce((a, c) => a + c.amount - c.fee, 0);
+
+                                                    const tableData = parsedTransactions.reduce((a, c) => {
+                                                                        const row = `
+               <tr>
+               <td>${moment(c.time).format("MMMM Do YYYY, h:mma")}</td>
+               <td>${c.type
+               .replace(/^Msg/, "")
+               .replace(/([A-Z])/g, " $1")
+               .trim()}</td>
+               <td>${c.direction}</td>
+               <td>${(c.direction === "Out"
+                                   ? -c.amount * baseCro
+                                   : c.amount * baseCro
+                               ).toFixed(8)}</td>
+               <td>${c.fee * baseCro}</td>
+               <td>${c.memo}</td>
+               </tr>`;
+
+                                                                        return a + row;
+                                                                    }, "");
+
+                                                    transactionsTable.innerHTML = `
+               <table>
+               <tr>
+               <th>Time</th>
+               <th>Type</th>
+               <th>Direction</th>
+               <th>Amount</th>
+               <th>Fee</th>
+               <th>Memo</th>
+               </tr>
+               ${tableData}
+               </table>`;
+                                                }
+
+                                async function downloadCSV() {
+                                                    const header = [["Time", "Type", "Direction", "Amount", "Fee", "Memo"]];
+                                                    const rows = parsedTransactions.reduce((a, c) => {
+                                                                        const row = [
+                                                                                            moment(c.time).format("MMM Do YYYY h:mma"),
+                                                                                            c.type
+                                                                                            .replace(/^Msg/, "")
+                                                                                            .replace(/([A-Z])/g, " $1")
+                                                                                            .trim(),
+                                                                                            c.direction,
+                                                                                            (c.direction === "Out"
+                                                                                                                ? -c.amount * baseCro
+                                                                                                                : c.amount * baseCro
+                                                                                                            ).toFixed(8),
+                                                                                            c.fee * baseCro,
+                                                                                            `"${c.memo}"`,
+                                                                                        ];
+
+                                                                        return [...a, row];
+                                                                    }, header);
+
+                                                    let csvContent =
+                                                        "data:text/csv;charset=utf-8," + rows.map((e) => e.join(",")).join("\n");
+                                                    var encodedUri = encodeURI(csvContent);
+                                                    var link = document.createElement("a");
+                                                    link.setAttribute("href", encodedUri);
+                                                    link.setAttribute("download", `CRO_Transactions_${address}.csv`);
+                                                    document.body.appendChild(link); // Required for FF
+
+                                                    link.click();
+                                                }
+
+                                function updateParam() {
+                                                    // Construct URLSearchParams object instance from current URL querystring.
+                                                    var queryParams = new URLSearchParams(window.location.search);
+
+                                                    // Set new or modify existing parameter value.
+                                                    queryParams.set("address", address);
+                                                    queryParams.set("currency", currency);
+
+                                                    // Replace current querystring with the new one.
+                                                    history.replaceState(null, null, "?" + queryParams.toString());
+                                                }
+
+                                async function update() {
+                                                    let hasError = false;
+
+                                                    try {
+                                                                        await updateAddress();
+                                                                    } catch (err) {
+                                                                                        errorOutput.innerText = "Error Getting Address Details";
+                                                                                        hasError = true;
+                                                                                        console.log(err);
+                                                                                    }
+
+                                                    try {
+                                                                        account = await getAccount(address);
+                                                                    } catch (err) {
+                                                                                        errorOutput.innerText = "Error Getting Account Details";
+                                                                                        hasError = true;
+                                                                                        console.log(err);
+                                                                                    }
+
+                                                    currency = fiatOptions.value;
+
+                                                    try {
+                                                                        price = await getPrice(currency);
+                                                                    } catch {
+                                                                                        errorOutput.innerText = "Error Getting Exchange Rate";
+                                                                                        hasError = true;
+                                                                                    }
+
+                                                    try {
+                                                                        updateTable("totalBalance", account.totalBalance);
+                                                                        updateTable("balance", account.balance);
+                                                                        updateTable("bondedBalance", account.bondedBalance);
+                                                                        updateTable(
+                                                                                            "claimed",
+                                                                                            account.totalBalance - sendIn - account.unclaimedReward + sendOut
+                                                                                        );
+                                                                        updateTable("unclaimed", account.unclaimedReward);
+
+                                                                        updateTable("totalReward", account.totalBalance - sendIn + sendOut);
+                                                                    } catch (err) {
+                                                                                        errorOutput.innerText = "Error Updating Table";
+                                                                                        hasError = true;
+                                                                                        console.log(err);
+                                                                                    }
+
+                                                    if (!hasError) errorOutput.innerText = "";
+
+                                                    document.cookie = `address=${address};path=/cro`;
+                                                    document.cookie = `currency=${currency};path=/cro`;
+
+                                                    updateParam();
+
+                                                    const refresh = (timeout) => {
+                                                                        if (timeout === 0) {
+                                                                                            nextRefresh.innerText = "Now!";
+                                                                                            return update();
+                                                                                        }
+
+                                                                        nextRefresh.innerText = (timeout--).toString();
+                                                                        return setTimeout(refresh, 1000, timeout);
+                                                                    };
+
+                                                    refresh(5);
+                                                }
+
+                                (async () => {
+                                                    var queryParams = new URLSearchParams(window.location.search);
+
+                                                    const cookieAddress = document.cookie
+                                                        .split("; ")
+                                                        .find((row) => row.startsWith("address="));
+
+                                                    const cookieCurrency = document.cookie
+                                                        .split("; ")
+                                                        .find((row) => row.startsWith("currency="));
+
+                                                    console.log(cookieAddress);
+                                                    if (typeof cookieAddress === "string") {
+                                                                        console.log(cookieAddress.split("=")[1]);
+                                                                        addressField.value = cookieAddress.split("=")[1];
+                                                                    }
+
+                                                    if (typeof cookieCurrency === "string") {
+                                                                        currency = cookieCurrency.split("=")[1];
+                                                                    }
+
+                                                    if (queryParams.has("address")) {
+                                                                        if (croRx.test(queryParams.get("address")))
+                                                                            addressField.value = queryParams.get("address");
+                                                                    }
+
+                                                    if (queryParams.has("currency")) {
+                                                                        currency = queryParams.get("currency");
+                                                                    }
+
+                                                    await updateFiat();
+                                                    await update();
+
+                                                    downloadCSVBtn.addEventListener("click", (event) => {
+                                                                        event.preventDefault();
+                                                                        downloadCSV();
+                                                                    });
+                                                })();
+
+                                // Register service worker to control making site work offline
+
+                                if ("serviceWorker" in navigator) {
+                                                    navigator.serviceWorker.register("/cro/sw.js").then(() => {
+                                                                        console.log("Service Worker Registered");
+                                                                    });
+                                                }
+
+                                // Code to handle install prompt on desktop
+
+                                let deferredPrompt;
+                                const addBtn = document.querySelector(".add-button");
+                                addBtn.style.display = "none";
+
+                                window.addEventListener("beforeinstallprompt", (e) => {
+                                                    // Prevent Chrome 67 and earlier from automatically showing the prompt
+                                                    e.preventDefault();
+                                                    // Stash the event so it can be triggered later.
+                                                        deferredPrompt = e;
+                                                    // Update UI to notify the user they can add to home screen
+                                                    addBtn.style.display = "block";
+
+                                                    addBtn.addEventListener("click", () => {
+                                                                        // hide our user interface that shows our A2HS button
+                                                                        addBtn.style.display = "none";
+                                                                        // Show the prompt
+                                                                        deferredPrompt.prompt();
+                                                                        // Wait for the user to respond to the prompt
+                                                                        deferredPrompt.userChoice.then((choiceResult) => {
+                                                                                            if (choiceResult.outcome === "accepted") {
+                                                                                                                console.log("User accepted the A2HS prompt");
+                                                                                                            } else {
+                                                                                                                                console.log("User dismissed the A2HS prompt");
+                                                                                                                            }
+                                                                                            deferredPrompt = null;
+                                                                                        });
+                                                                    });
+                                                });
+            </script>
+        </div>
+
+        <div class="wrapper-footer">
+            <div class="container">
+                <footer class="footer">
+
+
+
+
+
+
+
+
+
+
+
+                </footer>
+            </div>
+        </div>
+    </body>
+    <script>
+        (async () => {
+                    const canvas = document.createElement("canvas");
+
+                    class Star {
+                                constructor(ctx, x, y, r, color, minSize, maxSize) {
+                                            this.ctx = ctx;
+                                            this.x = x;
+                                            this.y = y;
+                                            this.r = r;
+                                            this.minSize = minSize;
+                                            this.maxSize = maxSize;
+                                            this.minSpeed = 0.05;
+                                            this.maxSpeed = 0.1;
+                                            this.direction = Math.random() > 0.5;
+                                            this.rChange =
+                                                Math.random() * (this.maxSpeed - this.minSpeed) + this.minSpeed;
+                                            this.color = color;
+                                        }
+                                render() {
+                                            this.ctx.beginPath();
+                                            this.ctx.fillRect(this.x, this.y, this.r, this.r);
+                                            this.ctx.shadowBlur = 20 * this.r;
+                                            this.ctx.shadowColor = this.color;
+                                            this.ctx.fillStyle = this.color;
+                                            this.ctx.fill();
+                                        }
+                                update() {
+                                            if (this.direction) {
+                                                        this.r += this.rChange;
+                                                        if (this.r > this.maxSize) this.direction = false;
+                                                    } else {
+                                                                this.r -= this.rChange;
+                                                                if (this.r < this.minSize) this.direction = true;
+                                                            }
+                                            if (this.r < 0) this.r = 0;
+                                        }
+                            }
+
+                    class StarField {
+                                constructor(canvas) {
+                                            this.canvas = canvas;
+                                            this.ctx = canvas.getContext("2d");
+                                            this.width = 0;
+                                            this.height = 170;
+                                            this.density = 0.002;
+                                            this.numStars = 0;
+                                            this.minSize = 0.2;
+                                            this.maxSize = 1.5;
+                                            this.colors = ["ffffff", "ffecd3", "bfcfff"];
+                                            this.stars = [];
+                                        }
+                                animate() {
+                                            // Reset if resized
+                                            if (this.width !== document.body.offsetWidth) {
+                                                        this.stars = [];
+                                                        this.canvas.width = this.width = document.body.offsetWidth;
+
+                                                        this.numStars = Math.floor(this.width * this.height * this.density);
+
+                                                        for (i = 0; i < this.numStars; i++) {
+                                                                    const randX = Math.floor(Math.random() * this.width + 1);
+                                                                    const randY = Math.floor(Math.random() * this.height + 1);
+                                                                    const randR =
+                                                                        Math.random() * (this.maxSize - this.minSize) + this.minSize;
+
+                                                                    const star = new Star(
+                                                                                this.ctx,
+                                                                                randX,
+                                                                                randY,
+                                                                                randR,
+                                                                                this.randomColor(),
+                                                                                this.minSize,
+                                                                                this.maxSize
+                                                                            );
+                                                                    this.stars.push(star);
+                                                                }
+                                                    }
+
+                                            this.ctx.clearRect(0, 0, this.width, this.height);
+
+                                            for (var i = 0; i < this.stars.length; i++) {
+                                                        this.stars[i].update();
+                                                        this.stars[i].render();
+                                                    }
+                                        }
+                                randomColor() {
+                                            return (
+                                                        "#" + this.colors[Math.floor(Math.random() * this.colors.length)]
+                                                    );
+                                        }
+                            }
+
+                    const starField = new StarField(canvas);
+
+                    const style = document.documentElement.style;
+                    const isFirefox = /firefox/i.test(navigator.userAgent);
+
+                    function diff(start, finish, max, step) {
+                                return Math.floor(
+                                            start > finish
+                                            ? start - ((start - finish) / max) * step
+                                            : start + ((finish - start) / max) * step
+                                        );
+                            }
+
+                    function animate() {
+                                // Set highlight colour based of time of day
+                                const date = new Date();
+                                const interval = date.getSeconds();
+                                const units = 60;
+                                const halfUnits = Math.floor(units / 2);
+
+                                const step = Math.floor(
+                                            interval > halfUnits ? units - interval : interval
+                                        );
+
+                                const colStart = { r: 205, g: 24, b: 222 };
+                                const colFinish = { r: 12, g: 112, b: 161 };
+
+                                const r = diff(colStart.r, colFinish.r, halfUnits, step);
+                                const g = diff(colStart.g, colFinish.g, halfUnits, step);
+                                const b = diff(colStart.b, colFinish.b, halfUnits, step);
+
+                                style.setProperty("--hl-colr", r);
+                                style.setProperty("--hl-colg", g);
+                                style.setProperty("--hl-colb", b);
+
+                                starField.animate();
+                                style.setProperty("--stars", "url(" + canvas.toDataURL() + ")");
+
+                                if (isFirefox) return null; // Don't animate if using firefox
+
+                                setTimeout(function () {
+                                            requestAnimationFrame(animate);
+                                        }, 100);
+                            }
+
+                    animate();
+                })();
+    </script>
+    <!--
+        <script src="assets/js/anime.min.js"></script>
+        <script>
+            var path = anime.path(".motion-path-demo path");
+
+           anime({
+           targets: "#displacementFilter feTurbulence",
+           seed: 100,
+           duration: 200,
+           loop: true,
+           });
+        </script>
+        -->
+</html>
