@@ -211,13 +211,13 @@
                                                 }
 
                                 async function getPrice(currency) {
-                                                    const priceurl = `https://crypto.com/price/coin-data/crypto-com-coin/basic_info.json`;
+                                                    const priceurl = `https://price-api.crypto.com/price/v1/tokens/crypto-com-coin`;
 
                                                     const res = await axios.get(priceurl);
 
                                                     const result = res.data;
 
-                                                    const priceUSD = parseFloat(result.usd_price_current);
+                                                    const priceUSD = parseFloat(result.usd_price);
 
                                                     if (currency === "USD") return priceUSD;
 
