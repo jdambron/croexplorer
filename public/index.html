@@ -417,8 +417,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
                                                     if (!hasError) errorOutput.innerText = "";
 
-                                                    document.cookie = `address=${address};path=/cro`;
-                                                    document.cookie = `currency=${currency};path=/cro`;
+                                                    document.cookie = `address=${address};path=/;sameSite=Strict`;
+                                                    document.cookie = `currency=${currency};path=/;sameSite=Strict`;
 
                                                     updateParam();
 
